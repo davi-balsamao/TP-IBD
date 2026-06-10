@@ -81,9 +81,25 @@ Os arquivos foram baixados diretamente dos portais oficiais em formato CSV (sepa
 | Licença | Dados públicos — LAI | Dados públicos — LAI |
 
 ---
-### Esquema Conceitual (Modelo ER)
+## Esquema Conceitual (Modelo ER)
 
 ![Esquema Conceitual (Modelo ER)](metadados/ModeloER.png)
+
+---
+## Análise Crítica das fontes
+
+### Taxa SELIC Diária (BACEN — Série SGS nº 11)
+
+- Cobertura apenas de dias úteis bancários: ausência de entradas em fins de semana e feriados exige cuidado em análises de intervalos de tempo contínuos e no cálculo de retornos acumulados.
+- Granularidade: a série representa a taxa efetiva média do dia, publicada pelo BACEN com atraso de um dia útil. Não captura valores ao longo do dia para análises intraday e não reflete expectativas futuras.
+- Limitação estrutural: a taxa SELIC publicada é anualizada (% a.a.), mas calculada sobre 252 dias úteis. Comparações com outras taxas devem observar essa convenção.
+
+### Preços e Taxas do Tesouro Direto (Tesouro Nacional)
+
+- Cotações apenas da manhã: o arquivo não disponibiliza cotações ao longo do pregão. Análises de valores em um mesmo dia são impossíveis com esta fonte.
+- Descontinuidade de títulos: títulos emitidos antes de 2021 e retirados de circulação antes do período analisado não aparecem, criando viés de sobrevivência para análises de longo prazo.
+- Heterogeneidade dos tipos de título: a coluna tipo_titulo mistura informações de categoria (IPCA+, Prefixado, Selic), produto (Renda+, Educa+) e vencimento em alguns casos, dificultando agrupamentos sem normalização prévia.
+- Ausência de volume negociado: os dados de preços e taxas não incluem volume financeiro, impedindo análises de liquidez efetiva.
 
 ---
 
