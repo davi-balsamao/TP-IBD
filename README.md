@@ -81,6 +81,7 @@ Os arquivos foram baixados diretamente dos portais oficiais em formato CSV (sepa
 | Licença | Dados públicos — LAI | Dados públicos — LAI |
 
 ---
+### Esquema Conceitual (Modelo ER)
 
 ![Esquema Conceitual (Modelo ER)](metadados/ModeloER.png)
 
