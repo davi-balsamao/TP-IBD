@@ -86,7 +86,7 @@ Os arquivos foram baixados diretamente dos portais oficiais em formato CSV (sepa
 ![Esquema Conceitual (Modelo ER)](metadados/ModeloER.png)
 
 ---
-## Análise Crítica das fontes
+## Análise crítica das fontes
 
 ### Taxa SELIC Diária (BACEN — Série SGS nº 11)
 
