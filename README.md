@@ -24,7 +24,7 @@ Este repositório contém os dados organizados e documentação referentes à an
 
 Os arquivos foram baixados diretamente dos portais oficiais em formato CSV (separador `;`, decimais com vírgula). O script `tratar_dados.py` realizou as seguintes transformações:
 
-- Conversão das datas para `DD/MM/AAAA`
+- Conversão das datas de `DD/MM/AAAA` para ISO 8601 (`AAAA-MM-DD`)
 - Substituição de vírgulas por pontos nos campos decimais
 - Geração dos arquivos `selic_limpo.csv` e `tesouro_absoluto.csv`
 
