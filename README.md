@@ -82,4 +82,8 @@ Os arquivos foram baixados diretamente dos portais oficiais em formato CSV (sepa
 
 ---
 
+![Esquema Conceitual (Modelo ER)](metadados/ModeloER.png)
+
+---
+
 *UFMG / DCC — Introdução a Bancos de Dados — 1º Semestre de 2026*
