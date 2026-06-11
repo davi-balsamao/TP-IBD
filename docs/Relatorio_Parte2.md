@@ -10,8 +10,8 @@
 > diária (% ao dia)** — e **não** a taxa anualizada (% a.a.). Por isso os valores
 > aparecem na casa de `0,007` a `0,055`. Sempre que este relatório fala em "SELIC",
 > trata-se da taxa **diária**. (Conversão de referência: `0,0551%/dia ≈ 15% a.a.`;
-> `0,0075%/dia ≈ 2% a.a.`.) O dicionário da Parte 1 rotulou essa coluna como
-> "% a.a." por engano — ver seção [Erratas](#7-erratas-e-correções-aplicadas).
+> `0,0075%/dia ≈ 2% a.a.`.) O dicionário da Parte 1 descreve essa coluna como taxa
+> diária; o rótulo correto da unidade é **"% ao dia"**.
 
 ---
 
@@ -22,7 +22,7 @@
 4. [Análise descritiva](#4-análise-descritiva-dos-dados) — 5 consultas
 5. [Análise orientada pelos objetivos](#5-análise-orientada-pelos-objetivos) — 5 consultas
 6. [Síntese dos achados](#6-síntese-dos-achados)
-7. [Erratas e correções aplicadas](#7-erratas-e-correções-aplicadas)
+7. [Análise crítica das fontes de dados](#7-análise-crítica-das-fontes-de-dados)
 8. [Mapa de arquivos](#8-mapa-de-arquivos)
 
 ---
@@ -461,42 +461,41 @@ ORDER BY t.data_vencimento ASC;
 
 ---
 
-## 7. Erratas e correções aplicadas
+## 7. Análise crítica das fontes de dados
 
-Durante a consolidação, vários números do texto original (`preparacao-analise.md`)
-**não correspondiam** aos resultados reais das consultas. Os valores corretos (acima)
-vêm diretamente dos CSVs em `consultas-resultados/`. Principais correções:
+Enquanto a seção 6 trata das limitações das **consultas** desta análise, esta seção
+registra as restrições estruturais das **próprias fontes** — características que
+condicionam o que é (e o que não é) possível concluir com os dados.
 
-| Afirmação original | Correto (conforme consulta) |
-|---|---|
-| SELIC "de 2% a 13,75% a.a., média 9,87%" | A coluna é **diária**: 0,0075–0,0551/dia (≈ 2% a ~15% a.a.); a série vai até ~15% a.a. em 2025 (não 13,75%) |
-| "IPCA+ dominante com +27 mil; Prefixados ~15 mil; Selic ~4,7 mil" | IPCA+ (família) = **16.656**; Prefixado (família) = **12.875**; Selic = **5.668**; Educa+ sozinho = **10.369** (consulta 3) |
-| "Prefixados travaram até 14,16%" | Máx. real = **16,33%** (consulta 5) |
-| "IPCA+ juros reais máximos de 6,46%" | Máx. real = **10,49%** (consulta 5) |
-| Resumo afirma haver nulos/lacunas no Tesouro | Colunas de venda têm **0 nulos** (consulta 6); a ressalva sobre nulos vale só para as colunas de _compra_, não testadas |
-| Texto menciona "Objetivo 3 — Liquidez e Refúgio / Bloco 3" | **Não existe** — só há 2 questões de pesquisa, e não há dados de volume para analisar liquidez (limitação da Parte 1) |
+### Taxa SELIC Diária (BACEN — Série SGS nº 11)
 
-**Decisão de modelagem:** a SELIC permanece armazenada como **taxa diária** (série 11),
-como veio do BACEN. As comparações que usam a SELIC já a rotulam como "diária"
-(consultas 13, 16–20). Apenas o **texto** foi corrigido para não chamá-la de "% a.a.".
+- **Cobertura apenas de dias úteis bancários:** a ausência de entradas em fins de semana
+  e feriados exige cuidado em análises de intervalos de tempo contínuos e no cálculo de
+  retornos acumulados.
+- **Granularidade:** a série representa a taxa efetiva média do dia, publicada pelo BACEN
+  com atraso de um dia útil. Não captura valores ao longo do dia para análises intraday
+  e não reflete expectativas futuras.
+- **Limitação estrutural (diária × anualizada):** a série utilizada (SGS nº 11) representa
+  a taxa SELIC efetiva **diária** (% ao dia), e não a taxa SELIC "oficial" divulgada pelo
+  Copom, que é anualizada considerando 252 dias úteis. Comparações ou conversões entre as
+  duas convenções (diária ↔ anualizada) devem ser feitas com cuidado para evitar
+  interpretações equivocadas dos valores.
 
-> ⚠️ **Pendência na Parte 1:** o dicionário de dados descreve `selic_diaria.valor`
-> como "Taxa SELIC efetiva diária (% a.a.)", o que é contraditório. O correto é
-> **"% ao dia"**. Vale corrigir o relatório da Parte 1 também.
+### Preços e Taxas do Tesouro Direto (Tesouro Nacional)
 
-### Nota sobre os prints originais (preparação)
-Os prints brutos da etapa de preparação (`docs/preparacao-analise/`) e o rascunho
-`preparacao-analise.md` foram **removidos** após a transcrição completa do conteúdo
-para este relatório. Para registro: os arquivos de imagem estavam com **nomes
-trocados**, conforme o mapeamento abaixo (conferido durante a transcrição):
-
-| Arquivo (removido) | Conteúdo real |
-|---|---|
-| `prep-analise-item3.jpeg` | Consulta 6 (verificação de **nulos**) |
-| `verificacao-nulo.jpeg` | Consulta 7 (**duplicatas**) |
-| `tratamento-duplicatas.jpeg` | Consulta 8 (**domínio** da SELIC) |
-| `identifcar-inconsistencia.jpeg` | Consulta 9 (**cronologia**) |
-| `criacao-atributosderivados.jpeg` | Consulta 10 (atributos derivados) ✓ |
+- **Nulos nas taxas de compra:** alguns títulos têm `taxa_compra_manha` nula em dias em
+  que o Tesouro suspendeu a compra (operações de recompra suspensas). Isso não é erro, é
+  limitação do produto.
+- **Cotações apenas da manhã:** o arquivo não disponibiliza cotações ao longo do pregão.
+  Análises de variação de valores dentro de um mesmo dia são impossíveis com esta fonte.
+- **Descontinuidade de títulos:** títulos emitidos antes de 2021 e retirados de circulação
+  antes do período analisado não aparecem, criando **viés de sobrevivência** para análises
+  de longo prazo.
+- **Heterogeneidade dos tipos de título:** a coluna `tipo_titulo` mistura informações de
+  categoria (IPCA+, Prefixado, Selic), produto (Renda+, Educa+) e vencimento em alguns
+  casos, dificultando agrupamentos sem normalização prévia.
+- **Ausência de volume negociado:** os dados de preços e taxas não incluem volume
+  financeiro, impedindo análises de liquidez efetiva.
 
 ---
 
@@ -504,13 +503,9 @@ trocados**, conforme o mapeamento abaixo (conferido durante a transcrição):
 
 | Pasta / arquivo | Conteúdo |
 |---|---|
-| `docs/consultas-resultados/consulta_1..20` | Resultados exportados em CSV (faltam 7,8,9 — retornaram vazio) |
-| `docs/analise_critica.md` | Análise crítica das fontes (etapa 6 do enunciado) |
-| `docs/Relatorio_Parte1_IBD.pdf` | Relatório da Parte 1 |
-
-> Os prints brutos de `docs/consultas/` (caracterização) e `docs/preparacao-analise/`
-> (preparação, descritiva e objetivos), além do rascunho `preparacao-analise.md`, foram
-> removidos: todo o conteúdo já está transcrito nas seções 1–7 deste relatório.
+| `docs/Relatorio_Parte1_IBD.pdf` | Relatório da Parte 1 (modelagem, dicionário de dados e análise das fontes) |
+| `docs/consultas-resultados/consulta_1..20` | Resultados exportados das consultas em CSV (faltam 7, 8 e 9 — retornaram vazio) |
+| `docs/Apresentacao_TP-IBD.pptx` | Slides da apresentação do trabalho |
 
 ### Correspondência consulta → arquivo de resultado
 
