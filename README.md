@@ -41,7 +41,7 @@ Os arquivos foram baixados diretamente dos portais oficiais em formato CSV (sepa
 | Coluna | Tipo SQL | Chave | Descrição | Valores esperados |
 |--------|----------|-------|-----------|-------------------|
 | `data` | `DATE` | PK | Data útil de referência (ISO 8601) | 2021-01-04 a 2025-12-31 |
-| `valor` | `NUMERIC(10,6)` | — | Taxa SELIC efetiva diária (% a.a.) | 2,0 a 14,75 no período |
+| `valor` | `NUMERIC(10,6)` | — | Taxa SELIC efetiva diária (% ao dia) | 0,007469 a 0,055131 no período (≈ 2% a 15% a.a.) |
 
 ### Tabela `tesouro_direto`
 
@@ -92,7 +92,7 @@ Os arquivos foram baixados diretamente dos portais oficiais em formato CSV (sepa
 
 - Cobertura apenas de dias úteis bancários: ausência de entradas em fins de semana e feriados exige cuidado em análises de intervalos de tempo contínuos e no cálculo de retornos acumulados.
 - Granularidade: a série representa a taxa efetiva média do dia, publicada pelo BACEN com atraso de um dia útil. Não captura valores ao longo do dia para análises intraday e não reflete expectativas futuras.
-- Limitação estrutural: a taxa SELIC publicada é anualizada (% a.a.), mas calculada sobre 252 dias úteis. Comparações com outras taxas devem observar essa convenção.
+- Limitação estrutural: a série utilizada (SGS nº 11) representa a taxa SELIC efetiva **diária** (% ao dia), e não a taxa SELIC "oficial" divulgada pelo Copom, que é anualizada considerando 252 dias úteis. Comparações ou conversões entre as duas convenções (diária ↔ anualizada) devem ser feitas com cuidado para evitar interpretações equivocadas dos valores.
 
 ### Preços e Taxas do Tesouro Direto (Tesouro Nacional)
 
