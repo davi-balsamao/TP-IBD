@@ -1,0 +1,18 @@
+"tipo_titulo","data_vencimento","preco_minimo","preco_maximo","amplitude_variacao_preco"
+"Tesouro Prefixado","2022-01-01",963.70,999.29,35.59
+"Tesouro Prefixado","2023-01-01",870.03,998.94,128.91
+"Tesouro Prefixado","2024-07-01",724.64,999.60,274.96
+"Tesouro Prefixado","2025-01-01",681.63,999.07,317.44
+"Tesouro Prefixado","2026-01-01",605.69,998.88,393.19
+"Tesouro Prefixado","2027-01-01",736.73,878.95,142.22
+"Tesouro Prefixado","2028-01-01",665.91,780.73,114.82
+"Tesouro Prefixado","2029-01-01",437.81,692.86,255.05
+"Tesouro Prefixado","2031-01-01",417.16,539.23,122.07
+"Tesouro Prefixado","2032-01-01",381.26,473.11,91.85
+"Tesouro Prefixado com Juros Semestrais","2023-01-01",982.52,1104.09,121.57
+"Tesouro Prefixado com Juros Semestrais","2025-01-01",934.02,1154.66,220.64
+"Tesouro Prefixado com Juros Semestrais","2027-01-01",892.03,1179.81,287.78
+"Tesouro Prefixado com Juros Semestrais","2029-01-01",838.77,1200.23,361.46
+"Tesouro Prefixado com Juros Semestrais","2031-01-01",794.03,1212.54,418.51
+"Tesouro Prefixado com Juros Semestrais","2033-01-01",764.78,1027.17,262.39
+"Tesouro Prefixado com Juros Semestrais","2035-01-01",745.87,972.26,226.39

@@ -1,0 +1,4 @@
+"cenario_selic","selic_diaria_media","taxa_media_ipca_mais","taxa_maxima_ipca_mais"
+"1. Dias de Selic Alta (>= 0.05)",0.0526,6.88,10.49
+"2. Dias de Selic Intermediária",0.0420,6.19,10.39
+"3. Dias de Selic Baixa (<= 0.02)",0.0129,3.98,5.12
