@@ -484,11 +484,13 @@ como veio do BACEN. As comparações que usam a SELIC já a rotulam como "diári
 > como "Taxa SELIC efetiva diária (% a.a.)", o que é contraditório. O correto é
 > **"% ao dia"**. Vale corrigir o relatório da Parte 1 também.
 
-### Nota sobre os nomes dos arquivos de imagem (preparação)
-Os prints da etapa de preparação estão com **nomes trocados** em
-`docs/preparacao-analise/`:
+### Nota sobre os prints originais (preparação)
+Os prints brutos da etapa de preparação (`docs/preparacao-analise/`) e o rascunho
+`preparacao-analise.md` foram **removidos** após a transcrição completa do conteúdo
+para este relatório. Para registro: os arquivos de imagem estavam com **nomes
+trocados**, conforme o mapeamento abaixo (conferido durante a transcrição):
 
-| Arquivo | Conteúdo real |
+| Arquivo (removido) | Conteúdo real |
 |---|---|
 | `prep-analise-item3.jpeg` | Consulta 6 (verificação de **nulos**) |
 | `verificacao-nulo.jpeg` | Consulta 7 (**duplicatas**) |
@@ -502,12 +504,13 @@ Os prints da etapa de preparação estão com **nomes trocados** em
 
 | Pasta / arquivo | Conteúdo |
 |---|---|
-| `docs/consultas/` | Prints das 5 consultas de caracterização (SQL + resultado) |
-| `docs/preparacao-analise/` | Prints das consultas de preparação, descritiva e objetivos |
-| `docs/preparacao-analise/preparacao-analise.md` | Texto-base original (números corrigidos aqui) |
 | `docs/consultas-resultados/consulta_1..20` | Resultados exportados em CSV (faltam 7,8,9 — retornaram vazio) |
 | `docs/analise_critica.md` | Análise crítica das fontes (etapa 6 do enunciado) |
 | `docs/Relatorio_Parte1_IBD.pdf` | Relatório da Parte 1 |
+
+> Os prints brutos de `docs/consultas/` (caracterização) e `docs/preparacao-analise/`
+> (preparação, descritiva e objetivos), além do rascunho `preparacao-analise.md`, foram
+> removidos: todo o conteúdo já está transcrito nas seções 1–7 deste relatório.
 
 ### Correspondência consulta → arquivo de resultado
 
